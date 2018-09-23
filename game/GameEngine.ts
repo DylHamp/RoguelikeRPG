@@ -14,6 +14,6 @@ test.setClass("Warrior");
 
 console.log(test.inventory);
 
-actionLoop();
+//actionLoop();
 
 
