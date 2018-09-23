@@ -1,0 +1,1 @@
+This file will hold different classes, thier modifiers, and starting items.

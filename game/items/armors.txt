@@ -1,0 +1,2 @@
+Helm,2,1
+Chest Piece,3,4
