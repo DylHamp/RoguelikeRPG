@@ -3,16 +3,16 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as items from "./items/items";
 import { actionLoop } from "./choices";
-
-
-let test = new Character();
-
-console.log(test.name + " has the Int stat of " + test.stats["int"]);
+import { Entity } from "./entities/entity";
 
 items.readInItems();
-test.setClass("Warrior");
+//These things above must be first
 
-console.log(test.inventory);
+let testEntity = new Character();
+
+//testEntity.setClass("Warrior");
+
+console.log(testEntity.showEquips());
 
 //actionLoop();
 

@@ -7,7 +7,7 @@ import { ARMORS } from "../items/items";
 export class Character extends Entity
 {
     class: string;//make a class for class
-    inventory: s.Inventory<any>;
+    inventory: s.Inventory;
     
     constructor()
     {
@@ -29,7 +29,6 @@ export class Character extends Entity
             this.inventory.add(WEAPONS["Sword"]);
             this.inventory.add(ARMORS["Helm"]);
             this.inventory.add(ARMORS["Chest Piece"]);
-
                 break;
         }
     }

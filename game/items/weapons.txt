@@ -1,2 +1,4 @@
-Sword,0,3,1,.1,3,10
-Axe,0,5,.7,.2,5,10
+Sword,Mainhand,3,1,.1,3,10
+Axe,Mainhand,5,.7,.2,5,10
+Empty Mainhand,Mainhand,1,1,0,0,0
+Empty Offhand,Offhand,1,1,0,0,0

@@ -1,2 +1,7 @@
-Helm,2,1
-Chest Piece,3,4
+Bare Head,Head,0
+Bare Chest,Torso,0
+Bare Legs,Legs,0
+Bare Feet,Feet,0
+Bare Hands,Hands,0
+Helm,Head,1
+Chest Piece,Torso,4

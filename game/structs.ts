@@ -1,13 +1,13 @@
 export enum EQUIPS
 {
-    MAINHAND,
-    OFFHAND,
-    HEAD,
-    TORSO,
-    LEGS,
-    FEET,
-    HANDS,
-    SPECIAL
+    MAINHAND = "Mainhand",
+    OFFHAND = "Offhand",
+    HEAD = "Head",
+    TORSO = "Torso",
+    LEGS = "Legs",
+    FEET = "Feet",
+    HANDS = "Hands",
+    SPECIAL = "Special"
 }
 
 export interface dict<T>
@@ -18,6 +18,7 @@ export interface dict<T>
 export class Item
 {
     name: string;
+    type: string;
     constructor()
     {
         this.name = "DEFAULT_ITEM";
@@ -26,21 +27,31 @@ export class Item
 
 export class Weapon extends Item
 {
-    type: number;
     attack: number;
-    accuracy?: number;
-    crit?: number;
-    weight?: number;
-    price?: number;
+    accuracy: number;
+    crit: number;
+    weight: number;
+    price: number;
 }
 
 export class Armor extends Item
 {
-    type: EQUIPS;
+    type: string;
     defence: number;
 }
 
-export class Inventory<Item>
+export class Equipment
+{
+    mainhand: Weapon;
+    offhand: Weapon;
+    head: Armor;
+    torso: Armor;
+    legs: Armor;
+    feet: Armor;
+    hands: Armor;
+}
+
+export class Inventory
 {
     container: dict<Item>;
     size: number;
@@ -86,14 +97,14 @@ export class Inventory<Item>
         if(this.inInv(item))
         {
             this.amount[this.indexOf(item)]++;
-            console.log("You have gained one more " + this.container[this.indexOf(item)]);
+            console.log("You have gained one more " + this.container[this.indexOf(item)]["name"]);
         }
         else
         {
             this.container[this.size] = item;
             this.amount[this.size] = 1;
             this.size++;
-            console.log("You have gained a(n) " + this.container[this.indexOf(item)]);
+            console.log("You have gained a(n) " + this.container[this.indexOf(item)]["name"]);
         }
     }
     
@@ -105,13 +116,30 @@ export class Inventory<Item>
             console.log("You have no more of this item. Removing it from inventory container.");
             for(let i = this.indexOf(item); i < this.size; i++)//Could be recursive
             {
-                this.container[i] = this.container[i++];
+                this.container[i] = this.container[i+1];
+                this.amount[i] = this.amount[i+1];
             }
             this.size--;
         }
         else
         {
             console.log("You have lost one of this item " + this.container[this.indexOf(item)]);
+        }
+    }
+
+    show()
+    {
+        let thing: Item;
+        let contents: string;
+        for(let i = 0; i < this.size; i++)
+        {
+            contents = "";
+            thing = this.container[i];
+            for(let x in thing)
+            {
+                contents += x + ":" + thing[x] + " ";
+            }
+            console.log(contents);
         }
     }
 

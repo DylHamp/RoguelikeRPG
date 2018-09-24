@@ -1,19 +1,29 @@
-let stdin = process.openStdin();
+var prompt = require('prompt');//using until better understand how to get input from user
 let input = "";
+
 
 export function actionLoop()
 {
-    while(input !== "Q")
-    {
-        console.log("You have entered the choice making loop. BE CAREFUL!!!");
+    //
+    // Start the prompt
+    //
+    prompt.start();
 
-        stdin.addListener("data", function(d) {
-            // note:  d is an object, and when converted to a string it will
-            // end with a linefeed.  so we (rather crudely) account for that  
-            // with toString() and then substring()
-            input = d.toString().trim();
-            console.log("you entered: [" + input + "]");
-        });
+    //
+    // Get two properties from the user: username and email
+    //
+    prompt.get(['input'], function (err, result) {
+    //
+    // Log the results.
+    //
+    console.log('Command-line input received:');
+    console.log('  input: ' + result.input);
+    input = result.input;
+    });
+    if(input === "q")//Doesnt work. Dont know why. Pushing off till later.
+    {
+        console.log("Quit");
     }
+
 }
 
